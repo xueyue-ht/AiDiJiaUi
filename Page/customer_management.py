@@ -1,5 +1,6 @@
 from selenium import webdriver
-from common.getelement import GetElement
+
+
 class CustomerManagement():
     @staticmethod
     def addclue(driver:webdriver.Chrome,):

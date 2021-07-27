@@ -1,5 +1,5 @@
 from selenium import webdriver
-from common.getelement import GetElement
+from Page.getelement import GetElement
 class Login():
     @staticmethod
     def login(driver:webdriver.Chrome,username,password):
