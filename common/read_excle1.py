@@ -7,7 +7,7 @@ workbook=xlrd.open_workbook(filepath)
 table=workbook.sheet_by_name('合并测试')
 mergedcells=table.merged_cells
 print(mergedcells)
-row=6;col=0
+row=1;col=0
 for (rowmin,rowmax,colmin,colmax) in mergedcells:
     if row>=rowmin and row<rowmax:
         if col>=colmin and col<colmax:
