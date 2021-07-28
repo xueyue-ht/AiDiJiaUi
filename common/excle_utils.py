@@ -18,27 +18,29 @@ class ExcleUtils():
         return col_count
     def get_cellvalue(self,row,col):
         mergedcells=self.sheet.merged_cells
-        for (rowmin, rowmax, colmin, colmax) in mergedcells:
-            if row >= rowmin and row < rowmax:
-                if col >= colmin and col < colmax:
-                    cellvalue = self.sheet.cell_value(rowmin, colmin)
-                    break
+        if len(mergedcells)==0:
+            cellvalue=self.sheet.cell_value(row,col)
+        else:
+            for (rowmin, rowmax, colmin, colmax) in mergedcells:
+                if row >= rowmin and row < rowmax:
+                    if col >= colmin and col < colmax:
+                        cellvalue = self.sheet.cell_value(rowmin, colmin)
+                        break
+                    else:
+                        cellvalue = self.sheet.cell_value(row, col)
                 else:
                     cellvalue = self.sheet.cell_value(row, col)
-            else:
-                cellvalue = self.sheet.cell_value(row, col)
         return  cellvalue
-    def get_allcellbvalue(self):
-        col = self.sheet.row_values(0)
+    def get_allcellvalue(self):
         excle_data_list = []
         # dict[col[0]]=excle.get_cellvalue(1,0)
         for rows in range(1, self.get_row_count()):
             dict = {}
             for length in range(self.get_col_count()):
-                dict[col[length]] = self.get_cellvalue(rows, length)
+                dict[self.get_cellvalue(0,length)] = self.get_cellvalue(rows, length)
             excle_data_list.append(dict)
         return excle_data_list
 if __name__=='__main__':
-    excle=ExcleUtils('test.xlsx','合并测试')
-    print(excle.get_allcellbvalue())
+    excle=ExcleUtils('../data/test.xlsx', '合并测试')
+    print(excle.get_allcellvalue())
 

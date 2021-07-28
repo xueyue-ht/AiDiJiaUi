@@ -2,7 +2,7 @@ import xlrd
 import os
 
 currentpath=os.path.dirname(__file__)
-filepath=os.path.join(currentpath,'test.xlsx')
+filepath=os.path.join(currentpath, '../data/test.xlsx')
 workbook=xlrd.open_workbook(filepath)
 table=workbook.sheet_by_name('合并测试')
 mergedcells=table.merged_cells
