@@ -25,8 +25,8 @@ class TestdataUtils():
             datalist.append(dict2)
         return datalist
 if __name__=='__main__':
-    test=TestdataUtils()
-    print(test.conversion())
+    test=TestdataUtils('接口用例数据.xlsx','接口测试')
+    print(test.conversion()[0]['casestep'][0]['请求地址'])
     # print(test.get_allcellvalue())
 
 
